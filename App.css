@@ -7,3 +7,17 @@ body, html {
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+
+h2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+form {
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
