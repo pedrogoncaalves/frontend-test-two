@@ -1,8 +1,18 @@
+import { renderEstimates } from "./api/estimatesapi";
 
-export default function Home() {
-  return (
-    <div>
-      <h1>Hello, World!</h1>
-    </div>
-  )
+
+import  Header  from "../components/Header";
+
+
+export default function Home () {
+
+
+
+    return(
+        <>
+        <Header/>
+
+        
+        </>
+    )
 }
