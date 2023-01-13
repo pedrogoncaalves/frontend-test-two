@@ -1,66 +1,40 @@
-import { addEstimates, renderEstimates } from "./api/estimatesapi";
+
 import { useState } from "react";
 
 import  Header  from "../components/Header";
 
 
-export default function Home () {
 
-    const [type, setType] = useState("");
-    const [electricity_unit, setElectricity_unit] = useState("");
-    const [electricity_value, setElectricity_value] = useState("");
-    const [country, setCountry] = useState("");
-    const [state, setState] = useState("");
+export default function Home ({ news }) {
 
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
     
-        const estimate = {
-            type,
-            electricity_unit,
-            electricity_value,
-            country,
-            state,
-        };
-        try {
-          const response = await addEstimates(estimate);
-          if (response.status !== 201) {
-            alert("Estimativas adicionadas com sucesso!");
-          }
-        } catch (error)
-         {
-            console.log(error)
-          alert("Erro ao adicionar estimativas");
-        } finally {
-          setType("");
-          setElectricity_unit("");
-          setElectricity_value("");
-          setCountry("");
-          setState("");
-         
-      }
-      };
-
- 
-
     return(
         <>
         <Header/>
+        <ul>
+            {news.map((n) => (
+                <li key={n}>{n}
+                {n.author}
+                </li>
+            ))}
+        </ul>
 
-        <h2>Calcule sua emissões de CO2 e ajude a cuidar do meio ambiente!</h2>
-        <form onSubmit={handleSubmit}>
-            <input type="text" id="type" name="type" value={type} onChange={(event) => {setType(event.target.value)}}></input>
-            <input type="text" id="electricity_unit" name="electricity_unit" value={electricity_unit} onChange={(event) => {setElectricity_unit(event.target.value)}}></input>
-            <input type="text" id="electricity_value" name="electricity_value" value={electricity_value} onChange={(event) => {setElectricity_value(event.target.value)}}></input>
-            <input type="text" id="country" name="country" value={country} onChange={(event) => {setCountry(event.target.value)}}></input>
-            <input type="text" id="state" name="state" value={state} onChange={(event) => {setState(event.target.value)}}></input>
-            <button type="submit">Enviar estimativas</button>
-
-        </form>
-        
-
-        
         </>
     )
 }
+
+export const getServerSideProps = async () => {
+    const apiKey = '109f03afaddf6f94afd50d8945d2c275';
+    const response = await fetch(`http://api.mediastack.com/v1/news?access_key=${apiKey}`)
+    const primaryData = await response.json();
+    const arrayOfNews = primaryData.data
+    
+
+    const newsTitle = arrayOfNews.map((news) => news.title);
+
+    return {
+        props: {
+            news: newsTitle
+        }
+        }
+    }
