@@ -14,23 +14,28 @@ h2 {
     margin-top: 50px;
 }
 
-form {
-    width: 30rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-}
+
 
 
 ul {
     list-style: none;
     display: flex;
-    flex-direction: inline;
-    max-width: 100%;
+    flex-direction: column;
+    
+    
+   
 }
 
-li {
-    
 
+
+
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    background: red;
 }

@@ -23,3 +23,8 @@ font-size: 20px;
 font-weight: 500;
 
 `
+
+export const container = styled.div`
+display: flex;
+justify-content: center;
+`
