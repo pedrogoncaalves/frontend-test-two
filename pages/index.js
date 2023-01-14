@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import  Header  from "../components/Header";
 import Image from "next/image";
+import Link from "next/link";
 
 
 export default function Home ({ news }) {
@@ -12,15 +13,20 @@ export default function Home ({ news }) {
         <>
         <Header/>
         <div className="container">
+            <main className="main__content">
         <ul>
-            {news.map((n) => (
+            {news.map((n) =>   (
                 <li key={n}>
-                    <Image width="100" height="50" alt="news image" src={n.image}/>
-                    {n.title}
+                    <span>{n.category.toUpperCase()}</span>
+                    <br/>
+                   <Link href={n.url}> {n.title}</Link>
+
+                    
                 
                 </li>
             ))}
         </ul>
+        </main>
         </div>
 
         </>
@@ -29,14 +35,14 @@ export default function Home ({ news }) {
 
 export const getServerSideProps = async () => {
     const apiKey = '109f03afaddf6f94afd50d8945d2c275';
-    const response = await fetch(`http://api.mediastack.com/v1/news?access_key=${apiKey}&countries=br`)
+    const response = await fetch(`http://api.mediastack.com/v1/news?access_key=${apiKey}&countries=us`)
     const primaryData = await response.json();
     const arrayOfNews = primaryData.data
     
 
     const newsTitle = arrayOfNews.map((news) => news);
     const newsImage = arrayOfNews.map((news) => news.image);
-  //  console.log(newsImage)
+  
 
  
 
