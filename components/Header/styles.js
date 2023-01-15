@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Navbar = styled.div`
 color: #FFFFFF;
 height: 50px;
-background-color: #25D366;
+background-color: #EEEEEE;;
 display: flex;
 justify-content: space-around;
 
@@ -18,9 +18,12 @@ margin-top: 10px;
 
 `
 
-export const Brand = styled.h1`
-font-size: 20px;
+export const Brand = styled.a`
+margin-top: 12px;
+cursor: pointer;
+font-size: 18px;
 font-weight: 500;
+color: #006269;
 
 `
 
