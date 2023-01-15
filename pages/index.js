@@ -17,12 +17,13 @@ export default function Home ({ news }) {
         <ul>
             {news.map((n) =>   (
                 <li key={n}>
-                    <span>{n.category.toUpperCase()}</span>
+                    <span className="news__title">{n.category.toUpperCase()}</span>
+                    
                     <br/>
-            {n.image && <Image src={`https://res.cloudinary.com/demo/image/fetch/${n.image}`} alt="news image" width={300} height={160}/>}
+                   <Link href={n.url}>
+                   {n.image && <Image src={`https://res.cloudinary.com/demo/image/fetch/${n.image}`} alt="news image" width={300} height={160}/>}
 
-                    <br/>
-                   <Link href={n.url}> {n.title}</Link>
+                     {n.title}</Link>
 
                     
                 

@@ -18,7 +18,7 @@ margin-top: 10px;
 
 `
 
-export const Brand = styled.a`
+export const Category = styled.a`
 margin-top: 12px;
 cursor: pointer;
 font-size: 18px;
@@ -27,7 +27,7 @@ color: #006269;
 
 `
 
-export const container = styled.div`
+export const Container = styled.div`
 display: flex;
 justify-content: center;
 `
