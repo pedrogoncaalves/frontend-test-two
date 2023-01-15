@@ -19,6 +19,9 @@ export default function Home ({ news }) {
                 <li key={n}>
                     <span>{n.category.toUpperCase()}</span>
                     <br/>
+            {n.image && <Image src={`https://res.cloudinary.com/demo/image/fetch/${n.image}`} alt="news image" width={300} height={160}/>}
+
+                    <br/>
                    <Link href={n.url}> {n.title}</Link>
 
                     
@@ -35,13 +38,13 @@ export default function Home ({ news }) {
 
 export const getServerSideProps = async () => {
     const apiKey = '109f03afaddf6f94afd50d8945d2c275';
-    const response = await fetch(`http://api.mediastack.com/v1/news?access_key=${apiKey}&countries=us`)
+    const response = await fetch(`http://api.mediastack.com/v1/news?access_key=${apiKey}&countries=us&limit=100`)
     const primaryData = await response.json();
     const arrayOfNews = primaryData.data
     
 
-    const newsTitle = arrayOfNews.map((news) => news);
-    const newsImage = arrayOfNews.map((news) => news.image);
+    const newsTitle = arrayOfNews.filter((news) => news.image);
+    
   
 
  
@@ -49,7 +52,7 @@ export const getServerSideProps = async () => {
     return {
         props: {
             news: newsTitle,
-            image: newsImage
+            
         }
         }
     }
