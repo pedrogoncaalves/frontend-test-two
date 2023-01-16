@@ -4,18 +4,28 @@ import { useState } from "react";
 import  Header  from "../components/Header";
 import Image from "next/image";
 import Link from "next/link";
+import { FilterForm } from "../components/FilterForm";
 
 
 export default function Home ({ news }) {
 
+    const [filter, setFilter] = useState('')
     
+    const filteredNews = news.filter((n) => n.title.includes(filter))
+    console.log(filteredNews)
+    console.log(filter)
+
     return(
         <>
         <Header/>
+
+        <FilterForm type="text" value={filter}
+        onChange={(event) => setFilter(event.target.value)}/>
+        
         <div className="container">
             <main className="main__content">
         <ul>
-            {news.map((n) =>   (
+            {filteredNews.map((n) =>   (
                 <li key={n}>
                     <span className="news__title">{n.category.toUpperCase()}</span>
                     
@@ -25,8 +35,6 @@ export default function Home ({ news }) {
 
                      {n.title}</Link>
 
-                    
-                
                 </li>
             ))}
         </ul>
@@ -44,15 +52,10 @@ export const getServerSideProps = async () => {
     const arrayOfNews = primaryData.data
     
 
-    const newsTitle = arrayOfNews.filter((news) => news.image);
     
-  
-
- 
-
     return {
         props: {
-            news: newsTitle,
+            news: arrayOfNews,
             
         }
         }

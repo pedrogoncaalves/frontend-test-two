@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Navbar = styled.div`
 color: #FFFFFF;
 height: 50px;
-background-color: #EEEEEE;;
+background-color: #EEEEEE;
 display: flex;
 justify-content: space-around;
 
