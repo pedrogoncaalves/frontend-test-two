@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 
 import  Header  from "../components/Header";
@@ -6,8 +7,7 @@ import Link from "next/link";
 import { FilterForm } from "../components/FilterForm";
 import { apiKey, renderNews } from "./services/config";
 
-
-export default function Business ({ news }) {
+export default function Home ({ news }) {
 
     const [filter, setFilter] = useState('')
     
@@ -51,7 +51,7 @@ export const getServerSideProps = async () => {
     const arrayOfNews = primaryData.data
     
 
-    const newsTitle = arrayOfNews.filter((news) => news.title.includes('Empresa'));
+    const newsTitle = arrayOfNews.filter((news) => news.category == 'sports');
     const newsImage = arrayOfNews.map((news) => news.image);
   
 

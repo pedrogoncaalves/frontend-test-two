@@ -5,6 +5,7 @@ import  Header  from "../components/Header";
 import Image from "next/image";
 import Link from "next/link";
 import { FilterForm } from "../components/FilterForm";
+import { apiKey, renderNews } from "./services/config";
 
 
 export default function Home ({ news }) {
@@ -46,8 +47,8 @@ export default function Home ({ news }) {
 }
 
 export const getServerSideProps = async () => {
-    const apiKey = '109f03afaddf6f94afd50d8945d2c275';
-    const response = await fetch(`http://api.mediastack.com/v1/news?access_key=${apiKey}&countries=us&limit=100`)
+  
+    const response = await renderNews(apiKey, 'br')
     const primaryData = await response.json();
     const arrayOfNews = primaryData.data
     

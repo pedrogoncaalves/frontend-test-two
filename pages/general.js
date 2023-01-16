@@ -6,8 +6,7 @@ import Link from "next/link";
 import { FilterForm } from "../components/FilterForm";
 import { apiKey, renderNews } from "./services/config";
 
-
-export default function Business ({ news }) {
+export default function Home ({ news }) {
 
     const [filter, setFilter] = useState('')
     
@@ -44,14 +43,13 @@ export default function Business ({ news }) {
         </>
     )
 }
-
 export const getServerSideProps = async () => {
     const response = await renderNews(apiKey, 'br')
     const primaryData = await response.json();
     const arrayOfNews = primaryData.data
     
 
-    const newsTitle = arrayOfNews.filter((news) => news.title.includes('Empresa'));
+    const newsTitle = arrayOfNews.filter((news) => news.category == 'general');
     const newsImage = arrayOfNews.map((news) => news.image);
   
 
