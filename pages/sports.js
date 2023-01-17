@@ -51,7 +51,7 @@ export const getServerSideProps = async () => {
     const arrayOfNews = primaryData.data
     
 
-    const newsTitle = arrayOfNews.filter((news) => news.category == 'sports');
+    const newsTitle = arrayOfNews.filter((news) => news.category == 'sports' || news.title.includes('jogo'));
     const newsImage = arrayOfNews.map((news) => news.image);
   
 

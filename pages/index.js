@@ -20,7 +20,7 @@ export default function Home ({ news }) {
         <>
         <Header/>
 
-        <FilterForm type="text" value={filter}
+        <FilterForm  type="text" value={filter}
         onChange={(event) => setFilter(event.target.value)}/>
         
         <div className="container">

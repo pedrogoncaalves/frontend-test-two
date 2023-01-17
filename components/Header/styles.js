@@ -1,12 +1,20 @@
 import styled from "styled-components"
 
 export const Navbar = styled.div`
+
 color: #FFFFFF;
 height: 50px;
 background-color: #EEEEEE;
 display: flex;
 justify-content: space-around;
 width: 100%;
+
+@media (max-width: 480px) {
+    display: none;
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+}
 
 `;
 
@@ -25,6 +33,8 @@ cursor: pointer;
 font-size: 18px;
 font-weight: 500;
 color: #006269;
+
+
 
 `
 
