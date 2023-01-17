@@ -6,6 +6,7 @@ height: 50px;
 background-color: #EEEEEE;
 display: flex;
 justify-content: space-around;
+width: 100%;
 
 `;
 

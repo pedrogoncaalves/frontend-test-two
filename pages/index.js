@@ -52,11 +52,12 @@ export const getServerSideProps = async () => {
     const primaryData = await response.json();
     const arrayOfNews = primaryData.data
     
+    const filteredNews = arrayOfNews.filter((news) => news.image !== 'null')
 
     
     return {
         props: {
-            news: arrayOfNews,
+            news: filteredNews,
             
         }
         }

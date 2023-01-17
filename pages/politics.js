@@ -51,14 +51,14 @@ export const getServerSideProps = async () => {
     const arrayOfNews = primaryData.data
     
 
-    const newsTitle = arrayOfNews.filter((news) => news.category == 'science');
-    const newsImage = arrayOfNews.map((news) => news.image);
+    const newsTitle = arrayOfNews.filter((news) => news.title.includes('Eleições'));
+    
   
 
     return {
         props: {
             news: newsTitle,
-            image: newsImage
+            
         }
         }
     }
