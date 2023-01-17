@@ -4,7 +4,7 @@ import  Header  from "../components/Header";
 import Image from "next/image";
 import Link from "next/link";
 import { FilterForm } from "../components/FilterForm";
-import { apiKey, renderNews } from "./services/config";
+import { apiKey, renderNews } from "../services/config";
 
 export default function Home ({ news }) {
 
